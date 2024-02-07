@@ -21,6 +21,23 @@ public class ProductRepository {
         productData.removeIf(product -> product.getProductId().equals(productId));
     }
 
+    public Product findById(String productId) {
+        return productData.stream()
+                .filter(product -> product.getProductId().equals(productId))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void update(Product product) {
+        productData.stream()
+                .filter(p -> p.getProductId().equals(product.getProductId()))
+                .findFirst()
+                .ifPresent(p -> {
+                    p.setProductName(product.getProductName());
+                    p.setProductQuantity(product.getProductQuantity());
+                });
+    }
+
     public Iterator<Product> findAll() {
         return productData.iterator();
     }
