@@ -11,9 +11,11 @@ import java.util.List;
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
 
+    int id = 1;
+
     public Product create(Product product) {
         productData.add(product);
-        product.setProductId(String.valueOf(productData.size()));
+        product.setProductId(String.valueOf(id++));
         return product;
     }
 
