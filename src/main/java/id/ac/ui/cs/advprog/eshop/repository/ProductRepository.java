@@ -13,7 +13,29 @@ public class ProductRepository {
 
     public Product create(Product product) {
         productData.add(product);
+        product.setProductId(String.valueOf(productData.size()));
         return product;
+    }
+
+    public void delete(String productId) {
+        productData.removeIf(product -> product.getProductId().equals(productId));
+    }
+
+    public Product findById(String productId) {
+        return productData.stream()
+                .filter(product -> product.getProductId().equals(productId))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void update(Product product) {
+        productData.stream()
+                .filter(p -> p.getProductId().equals(product.getProductId()))
+                .findFirst()
+                .ifPresent(p -> {
+                    p.setProductName(product.getProductName());
+                    p.setProductQuantity(product.getProductQuantity());
+                });
     }
 
     public Iterator<Product> findAll() {
