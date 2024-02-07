@@ -13,7 +13,12 @@ public class ProductRepository {
 
     public Product create(Product product) {
         productData.add(product);
+        product.setProductId(String.valueOf(productData.size()));
         return product;
+    }
+
+    public void delete(String productId) {
+        productData.removeIf(product -> product.getProductId().equals(productId));
     }
 
     public Iterator<Product> findAll() {
