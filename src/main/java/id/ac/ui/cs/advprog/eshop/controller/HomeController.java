@@ -9,6 +9,7 @@ import java.util.List;
 @RequestMapping("/")
 public class HomeController {
 
+
     @GetMapping("/")
     public String homePage(Model model){
         return "HomePage";
