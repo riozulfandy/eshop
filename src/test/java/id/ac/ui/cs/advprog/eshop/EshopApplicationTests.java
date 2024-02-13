@@ -10,4 +10,9 @@ class EshopApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    public void applicationStartsSuccessfully() {
+        // Test if the main method of your application starts up without errors
+        EshopApplication.main(new String[]{});
+    }
 }
