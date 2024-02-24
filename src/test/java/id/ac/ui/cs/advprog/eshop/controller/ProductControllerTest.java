@@ -27,12 +27,6 @@ public class ProductControllerTest {
     @MockBean
     private ProductService productService;
 
-    @MockBean
-    private CarService carService;
-
-    @MockBean
-    private CarServiceImpl carServiceImpl;
-
 
     @Test
     public void testCreateProductPage() throws Exception {
