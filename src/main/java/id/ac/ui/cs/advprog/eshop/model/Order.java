@@ -34,15 +34,10 @@ public class Order {
     }
 
     public void setStatus(String status) {
-        String[] statusList = {"WAITING_PAYMENT", "FAILED", "SUCCESS", "CANCELLED"};
-        if (Arrays.stream(statusList).noneMatch(item -> item.equals(status))) {
-            throw new IllegalArgumentException();
+        if (OrderStatus.contains(status)) {
+            this.status = status;
         } else {
-            if (OrderStatus.contains(status)) {
-                this.status = status;
-            } else {
-                throw new IllegalArgumentException();
-            }
+            throw new IllegalArgumentException();
         }
     }
 }
